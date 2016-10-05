@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+
+		<title>Todo Service</title>
+
+		<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="client/content/styles.css">
+
+	</head>
+
+	<body ng-app="todoApp">
+
+		<!-- Header страницы - Bootstarap Navbar (Static top) -->
+		
+		<nav class="navbar navbar-default navbar-static-top">
+		  <div class="container">
+		  	<div class="navbar-header">
+		  		<a class="navbar-brand" href="#">Todo Service</a>
+		  	</div>
+		  	<p class="navbar-text navbar-right">Добро пожаловать, Студент</p>
+		  </div>
+		</nav>
+	    <!--Внедряем  в страницу представления ToDo-->
+
+	    <div class="container col-lg-offset-3 col-lg-6" ng-include="'client/app/todo/todo.html'"></div>
+
+		<script src="bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="bower_components/angular/angular.min.js"></script>
+
+	     <!--Файлы приложения-->
+
+	    <script src="client/app/app.js"></script>
+	    <script src="client/app/todo/todoCtrl.js"></script>
+	                                
+	</body>
+
+</html>

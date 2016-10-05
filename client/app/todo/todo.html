@@ -1,0 +1,28 @@
+<div ng-controller="TodoCtrl as tdc">
+  <table class="table table-hover">
+  	<thead>
+  		<tr>
+  			<th ng-click="tdc.toggleSortField('completed')"></th>
+  			<th ng-click="tdc.toggleSortField('task')">Задача</th>
+  			<th ng-click="tdc.toggleSortField('deadLine')">Срок сдачи</th>
+  		</tr>
+  	</thead>
+  	<tbody>
+      <tr ng-repeat="todo in tdc.todos | orderBy:tdc.sortField:tdc.reverse" ng-dblclick='tdc.edit(todo)'>
+        <td><input type="checkbox" ng-model="todo.completed"></td>
+        <td><span  ng-class="{ 'completed' : todo.completed }" ng-bind="todo.task"></span></td>
+        <td><span ng-class="{ 'completed' : todo.completed }" ng-bind="(todo.deadLine | date:'dd.MM.yyyy')"></span></td>
+      </tr>	
+      <tr ng-if='tdc.isViewEditing'>
+        <td></td>
+        <td><input type='text' class='form-control' ng-model='tdc.editedTodo.task' placeholder='Задача'></td>
+        <td><input type='date' class='form-control' ng-model='tdc.editedTodo.deadLine' placeholder='yyyy-MM-dd' ></td>
+      </tr> 	
+  	</tbody>	
+  </table>
+  <button class='btn btn-primary' ng-click='tdc.add()' ng-if='!tdc.isViewEditing'>Добавить</button>
+  <button class='btn btn-primary' ng-click='tdc.save()' ng-if='tdc.isViewEditing'>Сохранить</button>
+  <button class='btn' ng-click='tdc.cancel()' ng-if='tdc.isViewEditing'>Отменить</button>
+
+</div>
+
